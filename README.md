@@ -19,19 +19,23 @@ Kelompok IT05
 ## Server
 
 
---
+
 
 ## Client
 
 
---
 
 ## Database
 
+Pertama, penulis menulis library-library yang akan digunakan pada program database ini. Berikut merupakan library-library yang penulis gunakan:
 
---
+```c
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+```
 
 ## Kendala
-
-
---
+- .
+- .
