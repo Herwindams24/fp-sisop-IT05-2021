@@ -23,7 +23,43 @@ Kelompok IT05
 
 ## Client
 
+Berikut merupakan library-library yang penulis gunakan:
+``` c
+#include <stdio.h>
+#include <sys/socket.h>
+#include <stdlib.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <pthread.h> 
+#include <termios.h> 
+```
+Di mana library-library tersebut memiliki fungsi sebagai berikut:
+* `<sys/stat.h>` - Library untuk memanggil fungsi pembuatan sebuah direktori baru (e.g. `mkdir()`)
+* `<stdio.h>` - Library untuk fungsi input-output (e.g. `printf(), sprintf()`)
+* `<sys/socket.h>` - Library untuk memanggil fungsi pemanfaatan socket
+* `<stdlib.h>` - Library untuk fungsi umum (e.g. `exit()`, `atoi()`)
+* `<netinet/in.h>` - Library untuk memanggil fungsi pemanfaatan internet
+* `<unistd.h>` - Library untuk mendapatkan lokasi current working direktory (e.g. `getcwd()`)
+* `<string.h>` - Libraryy untuk manipulasi string
+* `<pthread.h>` - Library untuk operasi thread (e.g. `pthread_create()`, `ptrhead_exit()` )
+* `<arpa/inet.h>` - Library untuk memanggil fungsi pemanfaatan serta manipulasi fungsi host menggunakan internet
+* `<termios.h>` - Library untuk menjalankan fungsi dalam terminal
 
+Selain itu, penulis juga mendeklarasikan port yang akan digunakan oleh `Client` adalah port 8080:
+```c
+#define PORT 8080
+```
+Dalam fungsi main, pertama-tama dilakukan inisialisasi socket dan juga struct socket untuk menginisialisasi socket yang akan digunakan untuk menjalankan program.
+```c
+ int sock;
+    struct sockaddr_in address;
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        printf("\n Socket creation error \n");
+        exit(EXIT_FAILURE);
+    }
+```
 
 ## Database
 
@@ -35,8 +71,13 @@ Pertama, penulis menulis library-library yang akan digunakan pada program databa
 #include <stdlib.h>
 #include <string.h>
 ```
+Di mana library-library tersebut memiliki fungsi sebagai berikut:
+* `<stdio.h>` - Library untuk fungsi input-output (e.g. `printf(), sprintf()`)
+* `<stdlib.h>` - Library untuk fungsi umum (e.g. `exit()`, `atoi()`)
+* `<string.h>` - Library untuk manipulasi string
+* `<stdlib.h>` - Library untuk operasi pembanding dan konversi (e.g. `atoi()`)
 
-Lalu buat sebuah struct bernama `database_Element` dengan member `ID`, `field_size`, `field_name`, `field_value`. Selain itu, *create* sebuah variabel dengan nama `db_Element`.
+Selanjutnya, penulis membuat sebuah struct bernama `database_Element` dengan member `ID`, `field_size`, `field_name`, `field_value`. Selain itu, *create* sebuah variabel dengan nama `db_Element`.
 
 ```c
 typedef struct database_Element{
