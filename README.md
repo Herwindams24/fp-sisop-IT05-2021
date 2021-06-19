@@ -6,3 +6,32 @@ Kelompok IT05
   * I Gde Ardha Semaranatha Gunasatwika (05311940000034)
 
 ---
+
+## Table of Contents
+
+* [Server](#server)
+* [Client](#client)
+* [Program Database](#database)
+* [Kendala](#kendala)
+
+---
+
+## Server
+
+
+--
+
+## Client
+
+
+--
+
+## Database
+
+
+--
+
+## Kendala
+
+
+--
