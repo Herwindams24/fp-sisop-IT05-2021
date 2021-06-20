@@ -129,6 +129,49 @@ if (mode == 0) {// LOGIN
             goto screen1;
 }
 ```
+Sementara dalam menjalankan register maka dari client side akan menampilkan respond “register succesfull” ketika berhasil mendaftarkan user ke dalam server. Adapun fungsi yang digunakan sebagai berikut:
+```c
+else if (mode == 1) { // REGISTER
+        printf("register success\n");
+    }
+```
+Saat sudah berhasil melakukan login, dari client side akan menampilkan pilihan fitur-fitur yang dapat dilakukan dalam program yang terdiri dari fitur: add, download, delete, see, find, serta logout. Adapun fungsi yang digunakan dalam menampilkan fitur adalah sebagai berikut:
+```c
+screen2:;
+    mode = -1;
+    while (mode == -1) {
+        printf("1. add\n2. download\n3. delete\n4. see\n5. find\n6. logout\nChoices: ");
+        char input[20];
+        scanf("%s", input);
+        if (strcmp(input, "add") == 0) {
+            mode = 0;
+            break;
+        } else if (strcmp(input, "download") == 0) {
+            mode = 1;
+            break;
+        } else if (strcmp(input, "delete") == 0) {
+            mode = 2;
+            break;
+        } else if (strcmp(input, "see") == 0) {
+            mode = 3;
+            break;
+        } else if (strcmp(input, "find") == 0) {
+            mode = 4;
+            break;
+        } else if (strcmp(input, "logout") == 0) {
+            mode = 5;
+            break;
+        }
+        printf("\nInvalid input.\n");
+    }
+```
+Jika user memilih opsi logout, maka client akan kembali menampilkan tampilan awal yang menampilkan opsi login atau register dengan menggunakan perintah berikut:
+```c
+else if (mode == 5) { // LOGOUT
+        goto screen1;
+    }
+```
+
 ## Database
 
 Pertama, penulis menulis library-library yang akan digunakan pada program database ini. Berikut merupakan library-library yang penulis gunakan:
