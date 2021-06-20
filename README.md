@@ -76,6 +76,31 @@ Lalu buat statement if yang berisikan parameter fungsi `inet_pton`. Fungsi ini m
         exit(EXIT_FAILURE);
     }
 ```
+Selanjutnya dilakukan inisialisasi koneksi dari client side dengan server side dan dilakukan deklarasi if condition jika connection gagal dilakukan sebagai berikut:
+```
+if (connect(sock, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        printf("\nConnection Failed \n");
+        exit(EXIT_FAILURE);
+    }
+```
+Ketika koneksi sudah terbentuk maka dilakukan penampilan screen 1 yang menampilkan pilihan untuk melakukan login atau register, kemudian mengirimkan input respon yang dikirimkan user kepada server side, sebagai berikut:
+```c
+screen1:;
+    int mode = -1;
+    while (mode == -1) {
+        char input[20];
+        printf("1. Login\n2. Register\nChoices: ");
+        scanf("%s", input);
+        if (strcmp(input, "login") == 0) {
+            mode = 0;
+            break;
+        } else if (strcmp(input, "register") == 0) {
+            mode = 1;
+            break;
+        }
+        printf("\nInvalid input.\n");
+    }
+```
 ## Database
 
 Pertama, penulis menulis library-library yang akan digunakan pada program database ini. Berikut merupakan library-library yang penulis gunakan:
