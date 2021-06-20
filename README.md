@@ -75,7 +75,6 @@ Lalu buat statement if yang berisikan parameter fungsi `inet_pton`. Fungsi ini m
         printf("\nInvalid address/ Address not supported \n");
         exit(EXIT_FAILURE);
     }
-  
 ```
 ## Database
 
