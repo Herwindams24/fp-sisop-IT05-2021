@@ -77,7 +77,7 @@ Lalu buat statement if yang berisikan parameter fungsi `inet_pton`. Fungsi ini m
     }
 ```
 Selanjutnya dilakukan inisialisasi koneksi dari client side dengan server side dan dilakukan deklarasi if condition jika connection gagal dilakukan sebagai berikut:
-```
+```c
 if (connect(sock, (struct sockaddr *)&address, sizeof(address)) < 0) {
         printf("\nConnection Failed \n");
         exit(EXIT_FAILURE);
@@ -100,6 +100,34 @@ screen1:;
         }
         printf("\nInvalid input.\n");
     }
+```
+Selanjutnya, terdapat inisialiasi variabel username dan password yang nantinya akan digunakan untuk menjalankan fungsi login dan juga register, sebagai berikut:
+```c
+    char username[210], password[200];
+    memset(username, 0, sizeof(username));
+    memset(password, 0, sizeof(password));
+    username[0] = mode + '0';
+    username[1] = '\t';
+    password[0] = '\t';
+    printf("Username: ");
+    getchar();
+    scanf("%[^\n]", username+2);
+    getchar();
+    printf("Password: ");
+    scanf("%[^\n]", password+1);
+    strcat(username, password);
+    send(sock, username, strlen(username), 0);
+```
+Berikutnya terdapat respond yang diberikan ketika berhasil melakukan login yang akan menampilkan “login success” ataupun gagal yang akan menampilkan pesan “login failed”.
+```c
+if (mode == 0) {// LOGIN
+        int resp;
+        read(sock, &resp, sizeof(resp));
+        if (resp) printf("login success\n");
+        else {
+            printf("login failed\n");
+            goto screen1;
+}
 ```
 ## Database
 
