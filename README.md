@@ -60,7 +60,23 @@ Dalam fungsi main, pertama-tama dilakukan inisialisasi socket dan juga struct so
         exit(EXIT_FAILURE);
     }
 ```
-
+Selanjutnya buat fungsi memset untuk mengisi blok memory dengan nilai `0`.
+```c
+memset(&address, '0', sizeof(address));
+```
+Selanjutnya menggunakan struktur field .sin_family yang mengandung address family. Di mana AF_INET saat TCP atau User Datagram Protocol (UDP) digunakan. Adapun .sin_port yang mengandung nilai port dan akan disimpan pada variabel htons(PORT).
+```c
+address.sin_family = AF_INET;
+address.sin_port = htons(PORT);
+```
+Lalu buat statement if yang berisikan parameter fungsi `inet_pton`. Fungsi ini mengubah string karakter src menjadi jaringan struktur alamat dalam keluarga alamat AF.
+```c
+   if(inet_pton(AF_INET, "127.0.0.1", &address.sin_addr)<=0) {
+        printf("\nInvalid address/ Address not supported \n");
+        exit(EXIT_FAILURE);
+    }
+  
+```
 ## Database
 
 Pertama, penulis menulis library-library yang akan digunakan pada program database ini. Berikut merupakan library-library yang penulis gunakan:
